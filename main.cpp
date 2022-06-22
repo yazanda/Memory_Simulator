@@ -1,0 +1,95 @@
+#include "sim_mem.h"
+#include <iostream>
+
+using namespace std;
+
+int main(){
+    char exec1[20] = "exec_file1";
+    char exec2[20] = "exec_file2";
+    char swap[20] = "swap_file";
+    sim_mem mem_sim(exec1,exec2,swap,25,50,25,25,
+                    25,5,2);
+    mem_sim.store(1,25,'S');
+    mem_sim.store(1,26,'I');
+    mem_sim.store(1,27,'M');
+    mem_sim.store(1,28,'*');
+    mem_sim.store(1,29,'-');
+    mem_sim.store(1,30,'M');
+    mem_sim.store(1,31,'E');
+    mem_sim.store(1,32,'M');
+    mem_sim.store(1,33,'*');
+    mem_sim.store(1,34,'-');
+    mem_sim.store(1,35,'O');
+    mem_sim.store(1,36,'S');
+    mem_sim.store(1,37,'*');
+    mem_sim.store(1,38,'-');
+    mem_sim.store(1,39,'-');
+    mem_sim.store(1,40,'E');
+    mem_sim.store(1,41,'X');
+    mem_sim.store(1,42,'5');
+    mem_sim.store(1,43,'*');
+    mem_sim.store(1,44,'-');
+    mem_sim.store(1,45,'C');
+    mem_sim.store(1,46,'+');
+    mem_sim.store(1,47,'+');
+    mem_sim.store(1,48,'/');
+    mem_sim.store(1,49,'/');
+    cout<< "PAGE 0 : "<< mem_sim.load(1,0);
+    cout<< mem_sim.load(1,1);
+    cout<< mem_sim.load(1,2);
+    cout<< mem_sim.load(1,3);
+    cout<< mem_sim.load(1,4);
+    cout<<"\tfrom executable file(text)."<<endl;
+    cout<< "PAGE 1 : "<< mem_sim.load(1,25);
+    cout<< mem_sim.load(1,26);
+    cout<< mem_sim.load(1,27);
+    cout<< mem_sim.load(1,28);
+    cout<< mem_sim.load(1,29)<<endl;
+    cout<< "PAGE 2 : "<< mem_sim.load(1,30);
+    cout<< mem_sim.load(1,31);
+    cout<< mem_sim.load(1,32);
+    cout<< mem_sim.load(1,33);
+    cout<< mem_sim.load(1,34)<<endl;
+    cout<< "PAGE 3 : "<< mem_sim.load(1,35);
+    cout<< mem_sim.load(1,36);
+    cout<< mem_sim.load(1,37);
+    cout<< mem_sim.load(1,38);
+    cout<< mem_sim.load(1,39)<<endl;
+    cout<< "PAGE 4 : "<< mem_sim.load(1,40);
+    cout<< mem_sim.load(1,41);
+    cout<< mem_sim.load(1,42);
+    cout<< mem_sim.load(1,43);
+    cout<< mem_sim.load(1,44)<<endl;
+    cout<< "PAGE 5 : "<< mem_sim.load(1,45);
+    cout<< mem_sim.load(1,46);
+    cout<< mem_sim.load(1,47);
+    cout<< mem_sim.load(1,48);
+    cout<< mem_sim.load(1,49)<<endl;
+    cout<< "PAGE 6 : "<< mem_sim.load(1,75);
+    cout<< mem_sim.load(1,76);
+    cout<< mem_sim.load(1,77);
+    cout<< mem_sim.load(1,78);
+    cout<< mem_sim.load(1,79);
+    cout<<"\tload from bss page."<<endl;
+    cout<< "PAGE 7 : "<< mem_sim.load(1,50);
+    cout<< mem_sim.load(1,51);
+    cout<< mem_sim.load(1,52);
+    cout<< mem_sim.load(1,53);
+    cout<< mem_sim.load(1,54);
+    cout<<"\tfrom executable file(data)."<<endl;
+    mem_sim.store(2,55,'D');
+    mem_sim.store(2,56,'O');
+    mem_sim.store(2,57,'N');
+    mem_sim.store(2,58,'E');
+    mem_sim.store(2,59,'!');
+    cout<< "Last Page : " << mem_sim.load(2,55);
+    cout << mem_sim.load(2,56);
+    cout << mem_sim.load(2,57);
+    cout << mem_sim.load(2,58);
+    cout << mem_sim.load(2,59)<<endl;
+
+    mem_sim.print_memory();
+    mem_sim.print_swap();
+    mem_sim.print_page_table();
+    return 0;
+}
