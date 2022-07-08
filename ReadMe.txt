@@ -1,6 +1,5 @@
 Memory Simulator
 Authored by Yazan Daefi
-323139923
 
 ==Description==
 
